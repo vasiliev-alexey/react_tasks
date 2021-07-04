@@ -2,3 +2,4 @@ coverage/*
 /docs/**
 !.eslintrc.js
 /dist/*
+webpack.config.ts
