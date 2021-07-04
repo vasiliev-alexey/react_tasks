@@ -23,6 +23,16 @@ module.exports = {
   },
 
   rules: {
+    '@typescript-eslint/ban-types': [
+      'error',
+      {
+        extendDefaults: true,
+        types: {
+          '{}': false,
+        },
+      },
+    ],
+
     '@typescript-eslint/explicit-function-return-type': 'off',
     '@typescript-eslint/no-unused-vars': ['warn', { ignoreRestSiblings: true }],
     'react/jsx-filename-extension': [
