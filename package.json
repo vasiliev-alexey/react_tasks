@@ -89,6 +89,5 @@
     "*.ts": "eslint --cache --fix",
     "*.{js,ts,md}": "prettier --write"
   },
-
   "description": "My tasks fot react"
 }
