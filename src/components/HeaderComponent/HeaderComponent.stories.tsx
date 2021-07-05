@@ -10,4 +10,9 @@ export default {
 };
 const Template: Story<HeaderPropType> = (args) => <HeaderComponent {...args} />;
 
-export const h1Comp = Template.bind({ level: 1, caption: '🛩' });
+export const h1Comp = Template.bind({});
+
+h1Comp.args = {
+  level: 1,
+  caption: 'q1q🛩',
+};

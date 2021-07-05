@@ -11,7 +11,8 @@
     "prepare": "husky install",
     "dev": "webpack serve  --port 5000 --mode=development",
     "storybook": "start-storybook -p 6006",
-    "loki-test": "loki test"
+    "loki-test": "loki test",
+    "build-storybook": "build-storybook -o ./dist --quiet"
   },
   "keywords": [],
   "author": "vasiliev-alexey",
