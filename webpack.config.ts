@@ -19,7 +19,10 @@ const webpackConfig = (env: {
   },
   output: {
     path: path.join(__dirname, '/dist'),
-    filename: 'build.js',
+    filename: 'index.js',
+  },
+  performance: {
+    hints: false,
   },
   module: {
     rules: [

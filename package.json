@@ -9,8 +9,9 @@
     "lint": "prettier --check . && eslint ./src --ext .js,.ts && tsc --noEmit",
     "lint:fix": "prettier --write . && eslint . --fix --ext .js,.ts && tsc --noEmit",
     "prepare": "husky install",
-    "dev": "webpack serve  --port 5000",
-    "storybook": "start-storybook -p 6006"
+    "dev": "webpack serve  --port 5000 --mode=development",
+    "storybook": "start-storybook -p 6006",
+    "loki-test": "loki test"
   },
   "keywords": [],
   "author": "vasiliev-alexey",
@@ -50,6 +51,7 @@
     "husky": "^6.0.0",
     "jest": "^27.0.6",
     "lint-staged": "^11.0.0",
+    "loki": "^0.28.1",
     "prettier": "2.3.2",
     "ts-jest": "^27.0.3",
     "ts-loader": "8.3.0",
