@@ -6,9 +6,16 @@
 module.exports = {
   clearMocks: true,
   resetMocks: true,
+  testEnvironment: 'jsdom',
+
+  testRegex: '(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$',
   globals: {
     'ts-jest': {
       diagnostics: false,
     },
   },
+  transform: {
+    '^.+\\.tsx?$': 'babel-jest',
+  },
+  moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
 };
