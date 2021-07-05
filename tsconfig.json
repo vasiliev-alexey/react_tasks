@@ -15,11 +15,7 @@
     "moduleResolution": "node",
     "downlevelIteration": true,
     "skipLibCheck": true,
-    "outDir": "./dist",
-
-    "paths": {
-      "components/*": ["src/components/*"]
-    }
+    "outDir": "./dist"
   },
   "include": ["./src", "./webpack.config.ts"]
 }
