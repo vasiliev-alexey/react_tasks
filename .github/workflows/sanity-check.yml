@@ -16,3 +16,13 @@ jobs:
       - name: Lint check
         run: |
           npm run lint
+
+      - name: Prepare docker
+        run: docker pull yukinying/chrome-headless-browser:90.0.4408.0
+
+      - name: build story book
+        run:  npm run build-storybook
+
+      - name: run loki test
+        run: |
+          npm run loki-test

@@ -11,7 +11,7 @@
     "prepare": "husky install",
     "dev": "webpack serve  --port 5000 --mode=development",
     "storybook": "start-storybook -p 6006",
-    "loki-test": "loki test",
+    "loki-test": "loki --requireReference --reactUri file:./dist ",
     "build-storybook": "build-storybook -o ./dist --quiet"
   },
   "keywords": [],
@@ -85,5 +85,10 @@
   "bugs": {
     "url": "https://github.com/vasiliev-alexey/react_tasks/issues"
   },
+  "lint-staged": {
+    "*.ts": "eslint --cache --fix",
+    "*.{js,ts,md}": "prettier --write"
+  },
+
   "description": "My tasks fot react"
 }
