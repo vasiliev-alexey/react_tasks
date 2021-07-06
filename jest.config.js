@@ -8,6 +8,15 @@ module.exports = {
   resetMocks: true,
   testEnvironment: 'jsdom',
 
+  coverageThreshold: {
+    global: {
+      branches: 60,
+      functions: 60,
+      lines: 60,
+      statements: 60,
+    },
+  },
+
   testRegex: '(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$',
   globals: {
     'ts-jest': {
