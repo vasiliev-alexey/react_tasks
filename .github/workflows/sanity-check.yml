@@ -29,4 +29,4 @@ jobs:
 
       - name: run deploy to GHP
         run: |
-          npm run deploy-storybook
+          npm run deploy-storybook -- --ci --host-token-env-variable=GITHUB_TOKEN
