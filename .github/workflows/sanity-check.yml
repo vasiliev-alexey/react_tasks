@@ -1,4 +1,4 @@
-name: PR Sanity Check
+name: Sanity Check && Test && Deploy to GHP
 
 on: [pull_request, push]
 
@@ -26,3 +26,7 @@ jobs:
       - name: run loki test
         run: |
           npm run loki-test
+
+      - name: run deploy to GHP
+        run: |
+          npm run deploy-storybook
