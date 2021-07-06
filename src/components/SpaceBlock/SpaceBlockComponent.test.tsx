@@ -3,7 +3,6 @@ import '@testing-library/jest-dom';
 
 import { render, screen } from '@testing-library/react';
 import { SpaceBlockComponent } from './SpaceBlockComponent';
-import { ParagraphComponent } from '../Paragraph/PargraphComponent';
 
 describe('test instance of Paragraph', () => {
   test('component - instance of react component', () => {

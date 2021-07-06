@@ -1,11 +1,11 @@
 import React from 'react';
 
-import { PargraphComponent } from './PargraphComponent.tsx';
+import { ParagraphComponent } from './PargraphComponent';
 import { Story } from '@storybook/react';
 import { ParagraphPropType } from '../types/types';
 
 export default {
-  component: PargraphComponent,
+  component: ParagraphComponent,
   title: 'Paragraph',
 };
 const Template: Story<ParagraphPropType> = (args) => (
