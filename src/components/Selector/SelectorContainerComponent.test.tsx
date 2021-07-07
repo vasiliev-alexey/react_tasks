@@ -12,34 +12,16 @@ describe('test instance of SelectorContainerComponent', () => {
   });
 });
 
-// describe('test render list components', () => {
-//
-//     const params: string[] = [
-//         "header:1:hello dolly"
-//     ];
-//
-//
-//     beforeEach(() => {
-//
-//         // for (let i = 0; i < params.length; i++) {
-//         //     window.prompt = jest.fn().mockReturnValueOnce(params[i]);
-//         // }
-//
-//         window.prompt = jest.fn().mockReturnValueOnce('')
-//     })
-//
-//     test('render - SelectorContainerComponent of react component', () => {
-//
-//         render(<SelectorContainerComponent {...{}} />);
-//         screen.debug();
-//     });
-// });
 test.each([
-  [1, 'header:1:hello dolly'],
-  [2, 'image:img_src:hello dolly'],
-])('render element %i with text %s', (el, text: string) => {
+  [1, 'header:1:hello dolly', 'h1'],
+  [2, 'image:img_src:hello dolly', 'image-test-id'],
+  [3, 'space:100:hello dolly', 'div-line-id'],
+  [4, 'paragraph:quote:hello dolly', 'paragraph-id'],
+  [5, 'column:2:hello dolly', 'column-test-id'],
+  [6, 'collapse:collapse block:hello dolly', 'toggleCollapseId'],
+])('render element %i with text %s', (el, text: string, testId: string) => {
   window.prompt = jest.fn().mockReturnValueOnce(text).mockReturnValueOnce('');
   render(<SelectorContainerComponent {...{}} />);
-
+  expect(screen.getAllByTestId(testId)[0]).toBeInTheDocument();
   screen.debug();
 });

@@ -9,7 +9,9 @@ export class ParagraphComponent extends React.Component<
     return (
       <>
         {this.props.style === 'quote' ? (
-          <blockquote>{this.props.text}</blockquote>
+          <blockquote data-testid={'paragraph-id'}>
+            {this.props.text}
+          </blockquote>
         ) : (
           <p
             style={

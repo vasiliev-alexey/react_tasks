@@ -1,5 +1,6 @@
 import React from 'react';
 import {
+  ColumnCountType,
   DummyState,
   FloatStyleType,
   HeaderLevel,
@@ -9,6 +10,8 @@ import { HeaderComponent } from '../Header/HeaderComponent';
 import { SpaceBlockComponent } from '../SpaceBlock/SpaceBlockComponent';
 import { ParagraphComponent } from '../Paragraph/PargraphComponent';
 import { ImageComponent } from '../Image/ImageComponent';
+import { ColumnComponent } from '../Column/ColumnComponent';
+import { CollapsingBlockComponent } from '../CollapsingBlock/CollapsingBlockComponent';
 
 export class SelectorContainerComponent extends React.Component<
   DummyState,
@@ -70,6 +73,31 @@ export class SelectorContainerComponent extends React.Component<
                 imageSource: paramOne,
                 floatStyle: paramTwo as FloatStyleType,
                 key: 2,
+              },
+              null
+            )
+          );
+          break;
+        case 'column':
+          displayComponents.push(
+            React.createElement(
+              ColumnComponent,
+              {
+                columnCount: +paramOne as ColumnCountType,
+                key: 5,
+              },
+              null
+            )
+          );
+          break;
+        case 'collapse':
+          displayComponents.push(
+            React.createElement(
+              CollapsingBlockComponent,
+              {
+                headerText: paramOne,
+                contentText: paramTwo,
+                isCollapse: true,
               },
               null
             )
