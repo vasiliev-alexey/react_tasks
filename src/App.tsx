@@ -1,6 +1,4 @@
 import React from 'react';
-import { HeaderComponent } from './components/Header/HeaderComponent';
-const App: React.FC = () => (
-  <HeaderComponent level={3} caption={'aaa 🛩 🚲 💪'} />
-);
+import { SelectorContainerComponent } from './components/Selector/SelectorContainerComponent';
+const App: React.FC = () => <SelectorContainerComponent />;
 export default App;
