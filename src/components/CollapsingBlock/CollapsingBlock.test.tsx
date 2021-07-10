@@ -56,7 +56,7 @@ describe('test header', () => {
         expect(1).toBe(2);
       } catch (e) {}
 
-      userEvent.click(screen.getByText('Покажи'));
+      userEvent.click(screen.getByText('Скрой'));
       expect(screen.getByText('dummy content')).toBeInTheDocument();
     });
   });
