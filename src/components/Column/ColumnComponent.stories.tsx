@@ -15,6 +15,5 @@ const Template: Story<ColumnPropsType> = (args) => (
 export const columnComp = Template.bind({});
 
 columnComp.args = {
-  columnCount: 2
-
+  columnCount: 2,
 };
