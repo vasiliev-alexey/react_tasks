@@ -8,7 +8,8 @@ export class ImageComponent extends React.Component<
   static defaultProps = {
     name: 'image',
     floatStyle: 1,
-    imageSource: 'imageSource',
+    imageSource:
+      'http://cvitanic.info/wp-content/uploads/2016/04/prednja-slika-1200x750.jpg',
   };
 
   render(): React.ReactElement {

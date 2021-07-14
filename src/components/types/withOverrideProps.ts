@@ -1,7 +1,12 @@
 import React from 'react';
 
-function withOverrideProps(component: React.Component, props: unknown) {
-  return class extends Element {
-    static defaultProps = props;
-  };
+export function withOverrideProps(
+  component: React.ComponentClass,
+  overrideProps: unknown
+): React.ComponentClass {
+  class EncClass extends component {
+    static defaultProps = overrideProps;
+  }
+
+  return EncClass;
 }

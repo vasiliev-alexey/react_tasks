@@ -1,43 +1,55 @@
-import React, { ChangeEvent, Component, FormEvent } from 'react';
+import React, { FormEvent } from 'react';
 import { HeaderComponent } from '../Header/HeaderComponent';
 import { ImageComponent } from '../Image/ImageComponent';
+import { withOverrideProps } from '../types/withOverrideProps';
+import { ColumnComponent } from '../Column/ColumnComponent';
+import { ParagraphComponent } from '../Paragraph/PargraphComponent';
+import { SpaceBlockComponent } from '../SpaceBlock/SpaceBlockComponent';
+import { CollapsingBlockComponent } from '../CollapsingBlock/CollapsingBlockComponent';
 
 export type ViewerPropsType = {};
 
-const customComponent = [HeaderComponent, ImageComponent];
+const customComponent = [
+  HeaderComponent,
+  ImageComponent,
+  ColumnComponent,
+  ParagraphComponent,
+  SpaceBlockComponent,
+  CollapsingBlockComponent,
+];
 
-//const comps = [HeaderComponent, ImageComponent];
-
-type ViewerComponentType = {
+type ViewerComponentStateType = {
   isComponentSelected: boolean;
   compProps: Record<string, string | number>;
+  compName: string | undefined;
+  shouldRenderComponent: boolean;
 };
 
 export class ViewerComponent extends React.Component<
   ViewerPropsType,
-  ViewerComponentType
+  ViewerComponentStateType
 > {
-  state = {
+  state: ViewerComponentStateType = {
     isComponentSelected: false,
-    compProps: {} as Record<string, string | number>,
+    compProps: {},
+    compName: undefined,
+    shouldRenderComponent: false,
   };
 
   #propChanged = (ev: React.ChangeEvent): void => {
     const targetElement = ev.target as HTMLInputElement;
-    console.log('changed', targetElement.value, targetElement.name);
 
     const oldProps: Record<string, string | number> = this.state.compProps;
     oldProps[targetElement.name] = targetElement.value;
 
-    this.setState({ compProps: oldProps });
+    this.setState({ compProps: oldProps, shouldRenderComponent: false });
   };
 
   #renderComponent = (): void => {
-    console.log('oldProps');
+    this.setState({ shouldRenderComponent: true });
   };
 
   #optionChanged = (ev: FormEvent): void => {
-    const currValue = this.state.isComponentSelected;
     if (ev.target instanceof HTMLInputElement) {
       const compName = ev.target.value;
       const compProps: Record<string, string | number> = {};
@@ -45,7 +57,6 @@ export class ViewerComponent extends React.Component<
       const comp = customComponent.filter(
         (c) => c.defaultProps.name === compName
       )[0];
-      console.log(compName, comp);
 
       if (comp) {
         Object.entries(comp.defaultProps).forEach((entry) => {
@@ -59,12 +70,22 @@ export class ViewerComponent extends React.Component<
       this.setState({
         isComponentSelected: true,
         compProps,
+        shouldRenderComponent: false,
+        compName: compName,
       });
     }
   };
 
   render(): React.ReactElement {
     const props: React.ReactElement[] = [];
+
+    const compName = customComponent.filter(
+      (c) => c.defaultProps.name === this.state.compName
+    )[0];
+    let EncComp = undefined;
+    if (compName) {
+      EncComp = withOverrideProps(compName, { ...this.state.compProps });
+    }
 
     Object.keys(this.state.compProps).map((val, ind) => {
       props.push(
@@ -102,8 +123,10 @@ export class ViewerComponent extends React.Component<
         <p>Component properties</p>
         {props}
         {this.state.isComponentSelected === true && (
-          <button onClick={this.#renderComponent}>Click</button>
+          <button onClick={this.#renderComponent}>Render Component</button>
         )}
+        <hr></hr>
+        {this.state.shouldRenderComponent && EncComp && <EncComp />}
       </>
     );
   }

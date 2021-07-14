@@ -5,6 +5,11 @@ export class SpaceBlockComponent extends React.Component<
   SpaceBlockPropType,
   DummyState
 > {
+  static defaultProps = {
+    height: 10,
+    name: 'space',
+  };
+
   render(): React.ReactElement {
     return (
       <div
