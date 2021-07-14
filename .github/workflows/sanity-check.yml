@@ -21,21 +21,21 @@ jobs:
         run: |
           npm run lint
 
-      - name: Lint check
+      - name: Run  Jest  T-E-S-T
         run: |
           npm run test
 
-      - name: Prepare docker
+      - name: Prepare docker for lokki test
         run: docker pull yukinying/chrome-headless-browser:90.0.4408.0
 
-      - name: build story book
+      - name: build story book for test
         run: npm run build-storybook
 
       - name: run loki test
         run: |
           npm run loki-test
 
-      - name: Deploy
+      - name: Deploy 2 G-H-P
         # https://github.com/marketplace/actions/deploy-to-github-pages
         uses: JamesIves/github-pages-deploy-action@4.0.0
         with:
