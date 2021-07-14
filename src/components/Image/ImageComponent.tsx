@@ -5,6 +5,12 @@ export class ImageComponent extends React.Component<
   ImagePropsType,
   DummyState
 > {
+  static defaultProps = {
+    name: 'image',
+    floatStyle: 1,
+    imageSource: 'imageSource',
+  };
+
   render(): React.ReactElement {
     return (
       <img
