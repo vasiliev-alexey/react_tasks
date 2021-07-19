@@ -12,5 +12,3 @@ const Template: Story<ViewerPropsType> = (args) => (
 );
 
 export const viewerComp = Template.bind({});
-
-viewerComp.args = {};

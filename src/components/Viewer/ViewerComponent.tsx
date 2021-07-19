@@ -59,10 +59,10 @@ export class ViewerComponent extends React.Component<
       )[0];
 
       if (comp) {
-        Object.entries(comp.defaultProps).forEach((entry) => {
-          if (entry[0] === 'name') {
+        Object.entries(comp.defaultProps).forEach(([key, val]) => {
+          if (key === 'name') {
           } else {
-            compProps[entry[0]] = entry[1];
+            compProps[key] = val;
           }
         });
       }
@@ -82,9 +82,11 @@ export class ViewerComponent extends React.Component<
     const compName = customComponent.filter(
       (c) => c.defaultProps.name === this.state.compName
     )[0];
-    let EncComp = undefined;
+    let EnhancementComponent: React.ComponentClass;
     if (compName) {
-      EncComp = withOverrideProps(compName, { ...this.state.compProps });
+      EnhancementComponent = withOverrideProps(compName, {
+        ...this.state.compProps,
+      });
     }
 
     Object.keys(this.state.compProps).map((val, ind) => {
@@ -92,6 +94,7 @@ export class ViewerComponent extends React.Component<
         <p key={ind}>
           <label>{val}</label>
           <input
+            data-testid={`comp-${val}`}
             name={val}
             onChange={this.#propChanged}
             value={this.state.compProps[val]}
@@ -108,6 +111,7 @@ export class ViewerComponent extends React.Component<
               return (
                 <p key={ind}>
                   <input
+                    data-testid={`comp-${el}`}
                     type="radio"
                     name="component"
                     value={el}
@@ -126,7 +130,9 @@ export class ViewerComponent extends React.Component<
           <button onClick={this.#renderComponent}>Render Component</button>
         )}
         <hr></hr>
-        {this.state.shouldRenderComponent && EncComp && <EncComp />}
+        {this.state.shouldRenderComponent && EnhancementComponent && (
+          <EnhancementComponent />
+        )}
       </>
     );
   }

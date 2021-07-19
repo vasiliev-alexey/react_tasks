@@ -27,7 +27,7 @@ export class CollapsingBlockComponent extends React.Component<
   };
 
   render(): React.ReactElement {
-    const isHidden = this.state.isCollapse || this.props.isCollapse;
+    const isHidden = this.state.isCollapse;
     return (
       <>
         <p data-testid={'toggleCollapseId'}>{this.props.headerText}</p>
