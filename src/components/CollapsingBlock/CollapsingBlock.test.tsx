@@ -38,7 +38,11 @@ describe('test header', () => {
       );
       expect(screen.getByTestId('toggleCollapseId')).toBeInTheDocument();
       expect(screen.getByText('dummy header')).toBeInTheDocument();
-      expect(screen.getByText('dummy content')).toBeInTheDocument();
+
+      try {
+        expect(screen.getByText('dummy content')).toBeInTheDocument();
+        expect(1).toBe(2);
+      } catch (e) {}
     });
 
     test('test SpaceBlockComponent  render with  click open content', () => {
@@ -56,7 +60,7 @@ describe('test header', () => {
         expect(1).toBe(2);
       } catch (e) {}
 
-      userEvent.click(screen.getByText('Скрой'));
+      userEvent.click(screen.getByText('Покажи'));
       expect(screen.getByText('dummy content')).toBeInTheDocument();
     });
   });

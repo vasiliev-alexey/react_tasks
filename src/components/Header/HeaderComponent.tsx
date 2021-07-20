@@ -5,6 +5,12 @@ export class HeaderComponent extends React.Component<
   HeaderPropType,
   DummyState
 > {
+  static defaultProps = {
+    name: 'header',
+    level: 1,
+    caption: 'caption',
+  };
+
   render(): React.ReactElement {
     return React.createElement(
       `h${this.props.level}`,
@@ -15,3 +21,5 @@ export class HeaderComponent extends React.Component<
     );
   }
 }
+
+//HeaderComponent.defaultProps = {};

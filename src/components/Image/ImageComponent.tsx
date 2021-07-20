@@ -5,6 +5,13 @@ export class ImageComponent extends React.Component<
   ImagePropsType,
   DummyState
 > {
+  static defaultProps = {
+    name: 'image',
+    floatStyle: 1,
+    imageSource:
+      'http://cvitanic.info/wp-content/uploads/2016/04/prednja-slika-1200x750.jpg',
+  };
+
   render(): React.ReactElement {
     return (
       <img
